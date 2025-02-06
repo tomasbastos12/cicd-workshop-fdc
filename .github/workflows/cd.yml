@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-    build-lint-test:
+    build-lint-test-deploy:
         runs-on: ubuntu-latest
         steps:
           # Fetches the GitHub repository files
