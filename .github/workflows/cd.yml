@@ -52,8 +52,5 @@ jobs:
             --image europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16\
             --region us-central
 
-          - name: docker build
-            run: 
-
           - name: This will be your CD ⚙️
             run: echo "This will be your CD ⚙️"
