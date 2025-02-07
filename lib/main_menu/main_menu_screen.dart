@@ -68,7 +68,7 @@ class MainMenuScreen extends StatelessWidget {
               ),
             ),
             _gap,
-            const Text('Music by Mr Smith'),
+            const Text('Music by Killa KF'),
             _gap,
           ],
         ),
