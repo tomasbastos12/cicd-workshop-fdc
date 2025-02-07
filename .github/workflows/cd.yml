@@ -25,13 +25,32 @@ jobs:
           # Set the default GCP project for subsequent gcloud commands in your environment. 
           - name: Configure GCP Project
             run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+          
+          - name: dependecies
+            run: flutter pub get
 
+          - name: build web
+            run: flutter build web
+
+          - name: analyze
+            run: flutter analyze
+
+          - name: test
+            run: flutter test
           # Configure Docker authentication for interacting with Artifact Registry, allowing you to push or pull Docker images securely.
           # Build the docker image and push top artifact registry.
           - name: Build and Push Docker Image 🐳
-            run: |
+            run: | 
             gcloud auth configure-docker --quiet
             gcloud auth configure-docker europe-west3-docker.pkg.dev --quiet
-          
+            docker build -t europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16 .
+            docker push europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16
+
+          - name: deploy
+            run: | 
+            gcloud run deploy cicd-16 \
+            --image europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16\
+            --region us-central
+
           - name: This will be your CD ⚙️
             run: echo "This will be your CD ⚙️"
