@@ -20,7 +20,7 @@ jobs:
           - name: Authenticate with GCP 
             uses: google-github-actions/auth@v1
             with:
-            credentials_json: ${{ secrets.GCP_SA_KEY }}
+              credentials_json: ${{ secrets.GCP_SA_KEY }}
 
           # Set the default GCP project for subsequent gcloud commands in your environment. 
           - name: Configure GCP Project
