@@ -54,7 +54,7 @@ jobs:
           - name: deploy
             run: | 
               gcloud run deploy cicd-16 \
-              --image europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16\
+              --image europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16 \
               --region us-central1 \
 
           - name: This will be your CD ⚙️
