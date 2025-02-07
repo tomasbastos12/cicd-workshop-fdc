@@ -26,6 +26,11 @@ jobs:
           - name: Configure GCP Project
             run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           
+          - name: Setup Flutter 
+            uses: subosito/flutter-action@v2
+            with:
+              channel: 'stable'
+              
           - name: dependecies
             run: flutter pub get
 
