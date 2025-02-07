@@ -30,7 +30,7 @@ jobs:
             uses: subosito/flutter-action@v2
             with:
               channel: 'stable'
-              
+
           - name: dependecies
             run: flutter pub get
 
@@ -55,7 +55,7 @@ jobs:
             run: | 
               gcloud run deploy cicd-16 \
               --image europe-west3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_ARTIFACT_REGISTRY }}/app_cicd_16:v16\
-              --region us-central
+              --region us-central1 \
 
           - name: This will be your CD ⚙️
             run: echo "This will be your CD ⚙️"
