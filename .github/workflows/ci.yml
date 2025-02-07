@@ -21,4 +21,9 @@ jobs:
               channel: 'stable'
           - name: dependecies
             run: flutter pub get
-            
+          - name: build web
+            run: flutter build web
+          - name: analyze
+            run: flutter analyze
+          - name: test
+            run: flutter test
