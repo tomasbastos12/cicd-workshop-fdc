@@ -21,4 +21,11 @@ jobs:
               channel: 'stable'
           - name: dependecies
             run: flutter pub get
-            
+          - name: build web
+            run: flutter build web
+          - name: format dart code
+            run: dart format --output=none --set-exit-if-changed
+          - name: analyze
+            run: flutter analyze
+          - name: test
+            run: flutter test
